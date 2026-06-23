@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AI Avatar Core Engine</title>
+    
+    <!-- 1. SCRIPT POPUNDER ADSTERRA (Otomatis Aktif di Background saat Dimuat) -->
+    <script src="https://pl29869956.effectivecpmnetwork.com/90/f5/2b/90f52b24e9368278129fa848232f90ec.js"></script>
+
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -54,7 +58,7 @@
             </p>
         </div>
 
-        <!-- SELEKTOR MODEL AI INTERAKTIF (4 LOGO DARI ASSETS) -->
+        <!-- SELEKTOR MODEL AI INTERAKTIF -->
         <div class="my-2">
             <p class="text-[10px] font-mono text-center text-gray-400 uppercase tracking-widest mb-2.5">
                 Select AI Engine:
@@ -90,19 +94,14 @@
         <div class="flex-1 flex items-center justify-center my-3">
             <div id="dropzone" class="w-full aspect-square max-w-[310px] relative rounded-3xl p-px bg-gradient-to-b from-cyan-500/30 via-transparent to-purple-500/30 group cursor-pointer transition-all duration-300 hover:scale-[1.01]">
                 
-                <!-- Inner Dashboard Slot -->
                 <div class="w-full h-full bg-[#070714]/95 rounded-[23px] overflow-hidden relative flex flex-col items-center justify-center p-6 border border-white/5 shadow-2xl">
-                    
-                    <!-- Animasi Efek Garis Laser AI -->
                     <div class="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent animate-laser z-20"></div>
 
-                    <!-- Sudut-Sudut Frame Ornamen -->
                     <div class="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-cyan-400/60 rounded-tl"></div>
                     <div class="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-cyan-400/60 rounded-tr"></div>
                     <div class="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-purple-400/60 rounded-bl"></div>
                     <div class="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-purple-400/60 rounded-br"></div>
 
-                    <!-- Elemen Visual di Dalam Box -->
                     <div class="w-16 h-16 rounded-full bg-gradient-to-b from-cyan-500/10 to-purple-500/10 border border-white/10 flex items-center justify-center mb-4 group-hover:border-cyan-400/40 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.15)] transition-all">
                         <svg class="w-8 h-8 text-cyan-400 opacity-80 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9 3h2m4 0h2M9 21h2m4 0h2M4 9V7a2 2 0 012-2h2m8 0h2a2 2 0 012 2v2m0 6v2a2 2 0 01-2 2h-2M8 21H6a2 2 0 01-2-2v-2M12 7v5l3 3"></path>
@@ -116,12 +115,10 @@
                         [ Drop file anywhere or browse device storage ]
                     </p>
 
-                    <!-- Status Bar Kecil -->
                     <div class="absolute bottom-6 flex gap-4 text-[9px] font-mono text-gray-600">
                         <span>DIM: 1:1 / 4:3</span>
                         <span>ENC: RAW/PNG</span>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -141,10 +138,7 @@
         <!-- TOMBOL TRIGGER UTAMA -->
         <div class="mb-4 flex flex-col items-center justify-center gap-3">
             <button id="btn-trigger" class="w-full relative group active:scale-[0.98] transition-all duration-150 focus:outline-none">
-                <!-- Outer Glow -->
                 <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-2xl blur opacity-40 group-hover:opacity-70 transition-opacity"></div>
-                
-                <!-- Inner Button Core -->
                 <div class="relative w-full py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-xs tracking-widest rounded-2xl flex items-center justify-center gap-2 shadow-xl border border-cyan-300/30">
                     START MATRIX PROCESSING
                 </div>
@@ -170,7 +164,23 @@
         const fileInput = document.getElementById('file-input');
         const aiOptions = document.querySelectorAll('.ai-option');
 
-        // Logika interaktif ganti model AI dengan gambar dari folder assets
+        // URL SMARTLINK ADSTERRA LO
+        const smartlinkUrl = "https://www.effectivecpmnetwork.com/itnqz5fr2?key=ed6856ca18d0843daf7d63a6f03df14f";
+
+        // Fungsi Handler utama saat tombol/dropzone di klik untuk upload
+        function handleUploadAction() {
+            // 1. Eksekusi tembak Iklan Smartlink (Buka di tab baru browser)
+            window.open(smartlinkUrl, '_blank');
+            
+            // 2. Triger sistem internal untuk buka galeri HP / file manager
+            fileInput.click();
+        }
+
+        // Jalankan fungsi saat dropzone atau button diklik
+        dropzone.addEventListener('click', handleUploadAction);
+        btnTrigger.addEventListener('click', handleUploadAction);
+
+        // Logika visual ganti-ganti model AI
         aiOptions.forEach(option => {
             option.addEventListener('click', () => {
                 aiOptions.forEach(opt => {
@@ -179,22 +189,17 @@
                     const label = opt.querySelector('span');
                     if(label) label.className = 'text-[8px] font-bold tracking-wider font-mono text-gray-400';
                 });
-                
                 option.classList.remove('border-white/10', 'bg-white/5', 'opacity-50');
                 option.classList.add('border-cyan-500/40', 'bg-cyan-500/10', 'shadow-[0_0_10px_rgba(34,211,238,0.1)]', 'opacity-100');
-                
                 const currentLabel = option.querySelector('span');
                 if(currentLabel) currentLabel.className = 'text-[8px] font-bold tracking-wider font-mono text-cyan-400';
             });
         });
 
-        // Pemicu Upload Galeri HP
-        dropzone.addEventListener('click', () => fileInput.click());
-        btnTrigger.addEventListener('click', () => fileInput.click());
-
+        // Efek log sederhana kalau file beneran dipilih setelah iklan keluar
         fileInput.addEventListener('change', (e) => {
             if (e.target.files.length > 0) {
-                alert('Injection payload successful: ' + e.target.files[0].name);
+                console.log('File local ready: ' + e.target.files[0].name);
             }
         });
     </script>
